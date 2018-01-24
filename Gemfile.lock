@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    kalixa_api (0.1.0)
+    kalixa_api (0.1.3)
       activesupport
       faraday (~> 0.14)
       faraday_middleware

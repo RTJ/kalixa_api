@@ -20,17 +20,21 @@ Or install it yourself as:
 
 ## Usage
 
-Create ENV variables for:
+Initialize the the gem by setting your username, password and api mode.
+
+Example:
+
+config/initializers/kalixa_api.rb
 
 ```ruby
 
-  ENV['KALIXA_API_USER'] # Production Api User
-  ENV['KALIXA_API_PASSWORD'] # Production Api Password
+KalixaApi.api_user ||= ENV['KALIXA_API_USER']
+KalixaApi.api_password ||= ENV['KALIXA_API_PASSWORD']
 
-  ENV['TEST_KALIXA_API_USER'] # Test Api User
-  ENV['TEST_KALIXA_API_PASSWORD'] # Test Api Password
+KalixaApi.test_api_user ||= ENV['TEST_KALIXA_API_USER']
+KalixaApi.test_api_password ||= ENV['TEST_KALIXA_API_PASSWORD']
 
-  ENV['KALIXA_API_MODE'] # If is NOT 'production' all requests will use test user / password and the test api url.
+KalixaApi.api_mode ||= (ENV['KALIXA_API_MODE'].downcase == 'production') rescue false
 
 ```
 

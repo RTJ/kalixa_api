@@ -2,21 +2,20 @@ module KalixaApi
   module V3
     class HttpService
 
-      attr_accessor :kalixa_api_user, :kalixa_api_password, :test_kalixa_api_user, :test_kalixa_api_password, :api_mode
+      attr_accessor :api_user, :api_password, :test_api_user, :test_api_password, :api_mode
 
-      def initialize(username: nil, password: nil)
-        @kalixa_api_user = kalixa_api_user || KalixaApi.kalixa_api_user
-        @kalixa_api_password = kalixa_api_password || KalixaApi.kalixa_api_password
-        @test_kalixa_api_user = test_kalixa_api_user || KalixaApi.test_kalixa_api_user
-        @test_kalixa_api_password = test_kalixa_api_password || KalixaApi.test_kalixa_api_password
-
+      def initialize(api_user: nil, api_password: nil, test_api_user: nil, test_api_password: nil, api_mode: nil)
+        @api_user = api_user || KalixaApi.api_user
+        @api_password = api_password || KalixaApi.api_password
+        @test_api_user = test_api_user || KalixaApi.test_api_user
+        @test_api_password = test_api_password || KalixaApi.test_api_password
         @api_mode = api_mode || KalixaApi.api_mode
       end
 
       def connection
         @connection ||= begin
           Faraday.new(:url => 'https://api.kalixa.com') do |faraday|
-            faraday.basic_auth(@kalixa_api_user , @kalixa_api_password)
+            faraday.basic_auth(@api_user , @api_password)
             faraday.adapter  Faraday.default_adapter
           end
         end
@@ -25,7 +24,7 @@ module KalixaApi
       def test_conection
         @connection ||= begin
           Faraday.new(:url => 'https://api.test.kalixa.com') do |faraday|
-            faraday.basic_auth(@test_kalixa_api_user, @test_kalixa_api_password)
+            faraday.basic_auth(@test_api_user, @test_api_password)
             faraday.adapter  Faraday.default_adapter
           end
         end
@@ -45,7 +44,6 @@ module KalixaApi
             req.body = data.to_xml(:root => xml_root)
           end
         end
-
       end
 
       def get_request(url, data, xml_root)
