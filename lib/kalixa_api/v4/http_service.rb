@@ -2,7 +2,7 @@ module KalixaApi
   module V4
     class HttpService
 
-      attr_accessor :kalixa_api_user, :kalixa_api_password, :test_kalixa_api_user, :test_kalixa_api_password, :api_test_mode
+      attr_accessor :kalixa_api_user, :kalixa_api_password, :test_kalixa_api_user, :test_kalixa_api_password, :api_mode
 
       def initialize(username: nil, password: nil)
         @kalixa_api_user = kalixa_api_user || KalixaApi.kalixa_api_user
@@ -10,7 +10,7 @@ module KalixaApi
         @test_kalixa_api_user = test_kalixa_api_user || KalixaApi.test_kalixa_api_user
         @test_kalixa_api_password = test_kalixa_api_password || KalixaApi.test_kalixa_api_password
 
-        @api_test_mode = api_test_mode || KalixaApi.api_test_mode
+        @api_mode = api_mode || KalixaApi.api_mode
       end
 
       def connection
@@ -34,7 +34,7 @@ module KalixaApi
       end
 
       def post_request(url, data = {})
-        if @api_test_mode
+        if @api_mode
           test_conection.post do |req|
             req.url url
             req.headers['Content-Type'] = 'application/json'
@@ -50,7 +50,7 @@ module KalixaApi
       end
 
       def get_request(url, data = {})
-        if @api_test_mode
+        if @api_mode
           test_conection.get do |req|
             req.url url
             req.headers['Content-Type'] = 'application/json'

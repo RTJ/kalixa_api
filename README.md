@@ -30,7 +30,7 @@ Create ENV variables for:
   ENV['TEST_KALIXA_API_USER'] # Test Api User
   ENV['TEST_KALIXA_API_PASSWORD'] # Test Api Password
 
-  ENV['KALIXA_API_TEST_MODE'] # If is true all requests will use test user / password and the test api url.
+  ENV['KALIXA_API_MODE'] # If is NOT 'production' all requests will use test user / password and the test api url.
 
 ```
 

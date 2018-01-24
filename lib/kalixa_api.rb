@@ -11,7 +11,7 @@ require 'kalixa_api/v4/merchant'
 
 module KalixaApi
   class << self
-    attr_accessor :kalixa_api_user, :kalixa_api_password, :test_kalixa_api_user, :test_kalixa_api_password, :api_test_mode
+    attr_accessor :kalixa_api_user, :kalixa_api_password, :test_kalixa_api_user, :test_kalixa_api_password, :api_mode
   end
 
   self.kalixa_api_user ||= ENV['KALIXA_API_USER']
@@ -20,5 +20,5 @@ module KalixaApi
   self.test_kalixa_api_user ||= ENV['TEST_KALIXA_API_USER']
   self.test_kalixa_api_password ||= ENV['TEST_KALIXA_API_PASSWORD']
 
-  self.api_test_mode ||= ENV['KALIXA_API_TEST_MODE']
+  self.api_mode ||= (ENV['KALIXA_API_MODE'].downcase == 'production')
 end
