@@ -1,0 +1,41 @@
+PATH
+  remote: .
+  specs:
+    kalixa_api (0.1.0)
+      activesupport
+      faraday (~> 0.14)
+      faraday_middleware
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    activesupport (5.1.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
+    concurrent-ruby (1.0.5)
+    faraday (0.14.0)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
+    i18n (0.9.3)
+      concurrent-ruby (~> 1.0)
+    minitest (5.11.1)
+    multipart-post (2.0.0)
+    rake (10.5.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.4)
+      thread_safe (~> 0.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  bundler (~> 1.16)
+  kalixa_api!
+  minitest (~> 5.0)
+  rake (~> 10.0)
+
+BUNDLED WITH
+   1.16.1
